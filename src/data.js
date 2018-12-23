@@ -1,6 +1,6 @@
 var data = [
     {
-        "completed": false,
+        "completed": true,
         "order": 523,
         "title": "feed cat",
         "url": "http://todo-backend-express.herokuapp.com/19461"
