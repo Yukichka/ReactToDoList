@@ -6,15 +6,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { todos:data };
+    this.doUpdate = this.doUpdate.bind(this);
   }
 
-  doUpdate = () => {
+  doUpdate () {
     console.log('clicked!')
+    fetch(`http://todo-backend-express.herokuapp.com`)
+      .then(resp => resp.json())
+      .then(json => {
+        console.log(json)
+        this.setState({
+          todos: json
+        });
+      })
   }
-   
+
+  componentDidMount(){
+    this.doUpdate();
+  }
+  
+  
 
   render () {
-    console.log(data);
+    console.log('state.todos', this.state.todos);
     return (
       <div>
         <h1>To do list</h1>

@@ -1,16 +1,4 @@
-var data = [
-    {
-        "completed": true,
-        "order": 523,
-        "title": "feed cat",
-        "url": "http://todo-backend-express.herokuapp.com/19461"
-    },
-    {
-        "completed": false,
-        "order": null,
-        "title": "milk cow",
-        "url": "http://todo-backend-express.herokuapp.com/19462"
-    }
-]
+var data = 
+[{"title":"blah","order":null,"completed":false,"url":"http://todo-backend-express.herokuapp.com/19473"},{"title":"blah","order":523,"completed":false,"url":"http://todo-backend-express.herokuapp.com/19474"},{"title":"blah","order":10,"completed":false,"url":"http://todo-backend-express.herokuapp.com/19475"},{"title":"blah","order":10,"completed":false,"url":"http://todo-backend-express.herokuapp.com/19476"}]
 
 export default data;
