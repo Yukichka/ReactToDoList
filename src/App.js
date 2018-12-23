@@ -15,10 +15,12 @@ class App extends React.Component {
     console.log('clicked!')
     fetch(`http://todo-backend-express.herokuapp.com`)
       .then(resp => resp.json())
-      .then(json => {
-        console.log(json)
+      .then(newTodos => {
+        newTodos.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)); 
+
+        console.log(newTodos)
         this.setState({
-          todos: json
+          todos: newTodos
         });
       })
   }
