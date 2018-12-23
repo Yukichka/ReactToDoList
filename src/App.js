@@ -1,16 +1,20 @@
 import React from "react";
+import data from "./data";
 
 
 class App extends React.Component {
   render () {
+    console.log(data);
     return (
       <div>
         <h1>To do list</h1>
         <ul>
-          <li>list1</li>
-          <li>list2</li>
-          <li>list3</li>
-          <li>list4</li>
+          {data.map(todo => 
+            <li>
+              <input type={'checkbox'} name={''} checked={todo.completed} />
+              {todo.title}
+            </li>
+          )}
         </ul>
       </div>
     );
