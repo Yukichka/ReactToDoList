@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = { todos:data };
     this.doUpdate = this.doUpdate.bind(this);
     this.doAdd = this.doAdd.bind(this);
+    this.onCheck = this.onCheck.bind(this);
   }
 
   doUpdate(){
@@ -46,8 +47,28 @@ class App extends React.Component {
     }).then(this.doUpdate)
   }
   
+  onCheck(todo){
+    
+    //const oldStatus = todo.completed
+    //todo.completed = !oldStatus
+    //this.setState({todos: this.state.todos});
 
-  render () {
+    // invert given flag
+    const newStatus = !todo.completed;
+    // send request to update flag
+    var payload = { "completed": newStatus }
+    fetch(todo.url, {
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(this.doUpdate)
+
+  }
+
+
+  render(){
     console.log('state.todos', this.state.todos);
     return (
       <div>
@@ -58,8 +79,9 @@ class App extends React.Component {
         <ul>
           {this.state.todos.map(todo => 
             <li>
-              <input type={'checkbox'} name={''} checked={todo.completed} />
-              {todo.title}
+              <input type={'checkbox'} name={''} checked={todo.completed} 
+                onChange={() => this.onCheck(todo)}/>
+              {todo.title}  
               <button onClick={() => this.doDelete(todo)}>Delete</button>
             </li>
           )}
