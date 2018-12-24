@@ -27,6 +27,7 @@ class App extends React.Component {
 
   componentDidMount(){
     this.doUpdate();
+    setInterval(() => this.doUpdate(), 3000);
   }
 
   doDelete(todo){
